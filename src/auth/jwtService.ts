@@ -2,8 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 // Local stand-in: the original auth module was not shipped with the zip.
-export const mainDomain = "https://example.com";
-export const baseURL = "http://localhost:8000";
+/** Backend base URL. Set VITE_API_BASE_URL to point at a real API. */
+export const baseURL: string = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
 export const getReq = (path: string, params: unknown, base: string = baseURL) =>
   axios.get(`${base}/${path}`, {
