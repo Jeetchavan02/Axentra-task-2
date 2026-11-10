@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import axios from "axios";
 // import { BsGoogle } from "react-icons/bs";
@@ -19,11 +19,9 @@ export default function LoginPage() {
   // module context part
 
   /* ------------ state ------------ */
-  const [grecaptchaReady, setGrecaptchaReady] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password] = useState("");
   const [step, setStep] = useState<
     | "email"
     | "login"
@@ -33,13 +31,9 @@ export default function LoginPage() {
     | "new-password"
     | "success"
   >("email");
-  const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   //reset password
-  const [resetEmail, setResetEmail] = useState("");
   // const [verificationCode, setVerificationCode] = useState('');
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   /* password rules (spaces excluded from length) */
   // const trimmedPwd = password.replace(/\s/g, '');
@@ -47,19 +41,14 @@ export default function LoginPage() {
   const [hasLowerCase, setHasLowerCase] = useState(false);
   const [hasNumber, setHasNumber] = useState(false);
   const [hasSpecialChar, setHasSpecialChar] = useState(false);
-  const [isValidLength, setIsValidLength] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [, setIsValidLength] = useState(false);
+  const [, setIsPasswordValid] = useState(false);
   // const [hasSpaces, setHasSpaces] = useState(false);
 
   // below are new variables created for the user registration page
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const passwordRef = useRef(null);
-  const [showPasswordErrors, setShowPasswordErrors] = useState(false);
+  const [isDropdownOpen] = useState(false);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const inputClasses =
     "w-full h-[8vh] rounded-lg border border-gray-300 bg-white p-4 text-base text-zinc-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors duration-200";
@@ -107,9 +96,6 @@ export default function LoginPage() {
       return;
     }
 
-    // added validation check for email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
     setIsLoading(true);
     try {
@@ -144,7 +130,7 @@ export default function LoginPage() {
   };
 
   // below function is for Enter key press
-  const handleKeyPress = (event) => {
+  const handleKeyPress = (event: React.KeyboardEvent) => {
     // Check if the key pressed was 'Enter'
     if (event.key === "Enter") {
       // Prevent the default form submission behavior if this input is inside a <form> tag
@@ -217,12 +203,6 @@ export default function LoginPage() {
     }
   };
 
-  const handleLoginOnEnter = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleLogin();
-    }
-  };
 
 
   /* ------------ render ------------ */
