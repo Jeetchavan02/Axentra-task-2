@@ -27,9 +27,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@src/components/ui/tab
 
 export default function CustomerFacingReferrals() {
   const [copied, setCopied] = useState(false);
-  const [referralCode, setReferralCode] = useState("SARAH2025");
-  const [referralLink, setReferralLink] = useState("https://yourstore.com/ref/SARAH2025");
-  const [userStats, setUserStats] = useState({
+  const [referralCode] = useState("SARAH2025");
+  const [referralLink] = useState("https://yourstore.com/ref/SARAH2025");
+  const [userStats] = useState({
     totalReferrals: 12,
     completedReferrals: 8,
     totalEarned: 240,
