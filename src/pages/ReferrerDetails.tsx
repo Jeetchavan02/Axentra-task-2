@@ -5,9 +5,7 @@ import { Button } from "@src/components/ui/button";
 import { Input } from "@src/components/ui/input";
 import { Label } from "@src/components/ui/label";
 import { Switch } from "@src/components/ui/switch";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@src/components/ui/select";
-import { Alert, AlertDescription } from "@src/components/ui/alert";
-import { Gift, Info } from "lucide-react";
+import { Gift } from "lucide-react";
 import { postReq, getReq, baseURL } from "@src/auth/jwtService";
 import { useToast } from "@src/context/ToastContext";
 
@@ -28,11 +26,6 @@ export default function referralSettingsPage({ children }: referralSettingsProps
   });
 
   const { showToast } = useToast();
-
-  const rewardTypeOptions = [
-    { value: "percentage", label: "Percentage" },
-    { value: "fixed_amount", label: "Fixed Amount" }
-  ];
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
