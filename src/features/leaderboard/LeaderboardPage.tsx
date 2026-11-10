@@ -95,8 +95,8 @@ export default function LeaderboardPage() {
               />
               <SummaryStats entries={board.ranked} />
               <Podium entries={board.ranked.slice(0, 3)} onSelect={(e) => setSelectedId(e.referrer.id)} />
-              <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-                <div className="xl:col-span-2">
+              <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+                <div className="min-w-0">
                   <LeaderboardTable entries={board.visible} selectedId={selectedId} onSelect={(e) => setSelectedId(e.referrer.id)} />
                 </div>
                 <div className="space-y-6">
@@ -107,8 +107,8 @@ export default function LeaderboardPage() {
             </TabsContent>
 
             <TabsContent value="rewards">
-              <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-                <div className="xl:col-span-2">
+              <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+                <div className="min-w-0">
                   <RewardsCatalog
                     rewards={rewards}
                     state={state}
