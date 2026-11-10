@@ -20,6 +20,8 @@ export interface Referrer {
   lifetime: PeriodStats;
   /** Share of lifetime activity that happened in each window. */
   periods: Record<Exclude<Period, "all">, PeriodStats>;
+  /** Multiplier describing recent trend; >1 means climbing the board. */
+  momentum: number;
 }
 
 export interface PeriodStats {
