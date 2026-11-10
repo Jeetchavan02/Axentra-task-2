@@ -7,8 +7,6 @@ import {
   DollarSign,
   TrendingUp,
   TrendingDown,
-  Filter,
-  Download,
   Plus,
   Eye,
   Award,
@@ -33,7 +31,6 @@ import HeadingSection from "@src/components/layouts/HeadingSection";
 
 export default function ReferralsMain() {
   const [timeRange, setTimeRange] = useState("30d");
-  const [selectedMetric, setSelectedMetric] = useState("all");
 
   const [keyMetrics, setKeyMetrics] = useState([
     {
