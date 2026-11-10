@@ -17,7 +17,13 @@ import {
   AlertDialogTrigger,
 } from "@src/components/ui/alert-dialog";
 
-export default function Sidebar() {
+interface SidebarProps {
+  /** Whether the drawer is open on small screens. Ignored on `lg` and up. */
+  mobileOpen?: boolean;
+  onNavigate?: () => void;
+}
+
+export default function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps) {
   const isOpen = true
 
   const user = JSON.parse(localStorage.getItem("userPermission") || "{}")?.logged_in_user;
@@ -57,8 +63,9 @@ export default function Sidebar() {
   return (
     <div
       className={cn(
-        " bg-white shadow-md z-10 transition-all duration-300 ease-in-out max-h-screen flex flex-col border-r",
-        isOpen ? "w-72 h-screen translate-x-0" : "-translate-x-full lg:translate-x-0"
+        "fixed inset-y-0 left-0 z-40 bg-white shadow-md transition-transform duration-300 ease-in-out max-h-screen flex flex-col border-r lg:static lg:z-10 lg:translate-x-0",
+        isOpen ? "w-72 h-screen" : "",
+        mobileOpen ? "translate-x-0" : "-translate-x-full"
       )}
     >
       <div className="p-6 border-b border-gray-200">
@@ -74,7 +81,7 @@ export default function Sidebar() {
             <li key={item.path}>
               {item.path === "home" ? (
                 // Custom Link and logic for `/home`
-                <Link to={`${mainDomain}/merchant/apps`}>
+                <Link to={`${mainDomain}/merchant/apps`} onClick={onNavigate}>
                   <div className={cn(
                     "flex items-center px-4 py-2 text-sm rounded-md cursor-pointer",
                     location.pathname === item.path
@@ -87,7 +94,7 @@ export default function Sidebar() {
                 </Link>
               ) : (
                 // Default Link logic
-                <Link to={item.path}>
+                <Link to={item.path} onClick={onNavigate}>
                   <div
                     className={cn(
                       "flex items-center px-4 py-2 text-sm rounded-md cursor-pointer",
