@@ -8,7 +8,6 @@ import { Progress } from "@src/components/ui/progress";
 
 export default function TotalRevenue() {
   const [timeRange, setTimeRange] = useState("30d");
-  const [revenueType, setRevenueType] = useState("all");
 
   const revenueStats = [
     { metric: "Total Revenue", value: "$47,850", change: "+18.2%", trend: "up" },
