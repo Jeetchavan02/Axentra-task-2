@@ -1,7 +1,13 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getPaginationRange } from "@src/utility/pagination/getPaginationRange";
 
-export default function Pagination({ currentPage, totalPages, onPageChange }) {
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
+}
+
+export default function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
     const range = getPaginationRange(currentPage, totalPages);
 
     return (
