@@ -1,7 +1,6 @@
 import { Home, LogOut, Trophy, Settings, UserCheck, UserCircle, Users, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@src/lib/utils";
-import { mainDomain } from "@src/auth/jwtService"
 import { UserLogout } from "@src/auth/UserLogout";
 import { useState } from "react";
 import { Button } from "@src/components/ui/button";
@@ -44,7 +43,6 @@ export default function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps
 
 
   const navItems = [
-    { name: "Command Center", path: "home", icon: <Home className="mr-3 h-5 w-5" /> },
     { name: "Conversions - live", path: "/", icon: <Settings className="mr-3 h-5 w-5" /> },
     { name: "Settings -live", path: "/settings", icon: <Users className="mr-3 h-5 w-5" /> },
     { name: "111", path: "/referrals/conversions", icon: <UserCheck className="mr-3 h-5 w-5" /> },
@@ -79,35 +77,18 @@ export default function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps
         <ul className="space-y-1">
           {navItems.map((item) => (
             <li key={item.path}>
-              {item.path === "home" ? (
-                // Custom Link and logic for `/home`
-                <Link to={`${mainDomain}/merchant/apps`} onClick={onNavigate}>
-                  <div className={cn(
+              <Link to={item.path} onClick={onNavigate}>
+                <div
+                  className={cn(
                     "flex items-center px-4 py-2 text-sm rounded-md cursor-pointer",
                     location.pathname === item.path
                       ? "bg-primary-50 text-primary-600 font-medium"
                       : "text-gray-600 hover:bg-gray-100"
-                  )}>
-                    {item.icon}
-                    {isOpen && item.name}
-                  </div>
-                </Link>
-              ) : (
-                // Default Link logic
-                <Link to={item.path} onClick={onNavigate}>
-                  <div
-                    className={cn(
-                      "flex items-center px-4 py-2 text-sm rounded-md cursor-pointer",
-                      location.pathname === item.path
-                        ? "bg-primary-50 text-primary-600 font-medium"
-                        : "text-gray-600 hover:bg-gray-100"
-                    )}
-                  >
-                    {item.icon}
-                    {isOpen && item.name}
-                  </div>
-                </Link>
-              )}
+                      >
+                  {item.icon}
+                  {isOpen && item.name}
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
