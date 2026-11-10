@@ -71,3 +71,17 @@ export default defineConfig([
   },
 ])
 ```
+
+## Local development
+
+```bash
+npm install
+npm run dev   # http://localhost:5175
+```
+
+- `src/auth/*` are local stand-ins (the original auth module was not shipped).
+  In dev, `ensureDevSession` seeds a placeholder `referral_user_token` cookie so the
+  router does not redirect to the main Axentra domain. This is skipped in
+  production builds.
+- Existing pages call a backend that is not bundled here, so they show empty
+  states. The Leaderboard & Rewards page (`/leaderboard`) runs on local mock data.
