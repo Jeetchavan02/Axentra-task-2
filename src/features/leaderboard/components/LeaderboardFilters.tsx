@@ -4,7 +4,8 @@ import { Input } from "@src/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@src/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@src/components/ui/select";
 import { METRIC_OPTIONS, PERIOD_OPTIONS } from "../constants/options";
-import type { Period, RankMetric } from "../types";
+import { TIERS } from "../constants/tiers";
+import type { Period, RankMetric, TierId } from "../types";
 
 interface LeaderboardFiltersProps {
   period: Period;
@@ -13,6 +14,8 @@ interface LeaderboardFiltersProps {
   onMetricChange: (metric: RankMetric) => void;
   query: string;
   onQueryChange: (query: string) => void;
+  tierFilter: TierId | "all";
+  onTierFilterChange: (tier: TierId | "all") => void;
   onExport: () => void;
   onRefresh: () => void;
 }
@@ -40,6 +43,19 @@ export default function LeaderboardFilters(props: LeaderboardFiltersProps) {
             className="w-52 pl-9"
           />
         </div>
+        <Select value={props.tierFilter} onValueChange={(value) => props.onTierFilterChange(value as TierId | "all")}>
+          <SelectTrigger className="w-[140px]">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All tiers</SelectItem>
+            {TIERS.map((tier) => (
+              <SelectItem key={tier.id} value={tier.id}>
+                {tier.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         <Select value={props.period} onValueChange={(value) => props.onPeriodChange(value as Period)}>
           <SelectTrigger className="w-[160px]">
             <SelectValue />
