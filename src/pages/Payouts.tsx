@@ -693,7 +693,7 @@ export default function ReferralsPayouts() {
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                         <span className="text-white font-bold text-lg">
-                          {selectedPayout.referrer.split(' ').map(n => n[0]).join('')}
+                          {selectedPayout.referrer.split(' ').map((n: string) => n[0]).join('')}
                         </span>
                       </div>
                       <div>
