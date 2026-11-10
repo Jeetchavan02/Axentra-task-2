@@ -28,10 +28,10 @@ export default function LeaderboardTable({ entries, selectedId, onSelect }: Lead
               <TableRow>
                 <TableHead className="w-16">Rank</TableHead>
                 <TableHead>Referrer</TableHead>
-                <TableHead>Tier</TableHead>
-                <TableHead className="text-right">Referrals</TableHead>
-                <TableHead className="text-right">Conversion</TableHead>
-                <TableHead className="text-right">Revenue</TableHead>
+                <TableHead className="hidden sm:table-cell">Tier</TableHead>
+                <TableHead className="hidden text-right md:table-cell">Referrals</TableHead>
+                <TableHead className="hidden text-right md:table-cell">Conversion</TableHead>
+                <TableHead className="hidden text-right md:table-cell">Revenue</TableHead>
                 <TableHead className="text-right">Points</TableHead>
               </TableRow>
             </TableHeader>
@@ -53,16 +53,16 @@ export default function LeaderboardTable({ entries, selectedId, onSelect }: Lead
                       <ReferrerAvatar name={entry.referrer.name} size="sm" />
                       <div>
                         <p className="font-medium text-gray-900">{entry.referrer.name}</p>
-                        <p className="text-xs text-gray-500">{entry.referrer.email}</p>
+                        <p className="hidden text-xs text-gray-500 sm:block">{entry.referrer.email}</p>
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="hidden sm:table-cell">
                     <TierBadge tier={entry.tier} />
                   </TableCell>
-                  <TableCell className="text-right">{formatNumber(entry.stats.referrals)}</TableCell>
-                  <TableCell className="text-right">{formatPercent(entry.conversionRate)}</TableCell>
-                  <TableCell className="text-right">{formatCurrency(entry.stats.revenue)}</TableCell>
+                  <TableCell className="hidden text-right md:table-cell">{formatNumber(entry.stats.referrals)}</TableCell>
+                  <TableCell className="hidden text-right md:table-cell">{formatPercent(entry.conversionRate)}</TableCell>
+                  <TableCell className="hidden text-right md:table-cell">{formatCurrency(entry.stats.revenue)}</TableCell>
                   <TableCell className="text-right font-semibold">{formatNumber(entry.points)}</TableCell>
                 </TableRow>
               ))}
