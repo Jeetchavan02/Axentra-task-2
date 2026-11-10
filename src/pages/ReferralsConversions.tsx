@@ -304,7 +304,6 @@ export default function ReferralsConversions() {
         setLoading(true);
         const params = `?shop=${encodeURIComponent(sessionData.shop)}&range=${selectedTimeframe}`;
         try {
-            // const res = await getReq("overview", params, "http://localhost:8000");
             const res = await getReq("overview", params, baseURL);
             const data: ApiResponse = res?.data;
             if (data) {
@@ -326,7 +325,6 @@ export default function ReferralsConversions() {
         const params = `?shop=${encodeURIComponent(sessionData.shop)}&range=${selectedTimeframe}`;
         try {
             const res = await getReq("all_conversions", params, baseURL);
-            // const res = await getReq("all_conversions", params, "http://localhost:8000");
             const data: AllConversionsApiResponse = res?.data;
             if (data?.data) {
                 const filteredData: AllConversionsTableData[] = data.data.map(
