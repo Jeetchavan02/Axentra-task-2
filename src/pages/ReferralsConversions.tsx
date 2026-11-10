@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
     Target,
     ShoppingCart,
-    Download,
     RefreshCw,
     CheckCircle,
     XCircle,
@@ -68,7 +67,6 @@ interface AllConversionsApiResponse {
 
 export default function ReferralsConversions() {
     const [selectedTimeframe, setSelectedTimeframe] = useState("30d");
-    const [selectedProgram, setSelectedProgram] = useState("all");
     // const [selectedMetric, setSelectedMetric] = useState("conversion_rate");
     const [overviewRecentConversions, setOverviewRecentConversions] = useState<DashboardData[]>([]);
     const [loading, setLoading] = useState(false);
@@ -84,20 +82,13 @@ export default function ReferralsConversions() {
     const [activeTab, setActiveTab] = useState("overview");
     const [searchTerm, setSearchTerm] = useState("");
     const [debouncedSearch, setDebouncedSearch] = useState("");
-    const [currencySymbol, setCurrencySymbol] = useState("₹");
+    const [currencySymbol] = useState("₹");
 
     const timeframeOptions = [
         { value: "7d", label: "Last 7 Days" },
         { value: "30d", label: "Last 30 Days" },
         { value: "90d", label: "Last 90 Days" },
         { value: "1y", label: "Last Year" }
-    ];
-
-    const programOptions = [
-        { value: "all", label: "All Programs" },
-        { value: "friends-family", label: "Friends & Family" },
-        { value: "influencer", label: "Influencer Program" },
-        { value: "affiliate", label: "Affiliate Program" }
     ];
 
     // const metricOptions = [
