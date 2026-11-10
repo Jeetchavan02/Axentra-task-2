@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 // import { BsGoogle } from "react-icons/bs";
 import { removeToken, setToken } from "@src/auth/auth";
+import { baseURL } from "@src/auth/jwtService";
 import { useNavigate } from "react-router-dom";
 // import { ArrowBigLeft, Check, ChevronsLeft, Eye, EyeOff, StepBack } from "lucide-react";
 
@@ -99,9 +100,8 @@ export default function LoginPage() {
 
     setIsLoading(true);
     try {
-      // const { data } = await axios.post("http://localhost:8000/merchant/check_validation/", { email });
       const { data } = await axios.get(
-        `http://localhost:8000/api/v1/auth_user/check_user/?email=${email}`,
+        `${baseURL}/api/v1/auth_user/check_user/?email=${encodeURIComponent(email)}`,
       );
       const exists = data?.data?.exists;
       if (exists === true) {
@@ -152,7 +152,7 @@ export default function LoginPage() {
       formData.append("password", actualPassword);
 
       const { data } = await axios.post(
-        `http://localhost:8000/api/v1/auth_user/login/`,
+        `${baseURL}/api/v1/auth_user/login/`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
