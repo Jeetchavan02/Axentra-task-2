@@ -84,7 +84,8 @@ export default function Sidebar({ mobileOpen = false, onNavigate }: SidebarProps
                     location.pathname === item.path
                       ? "bg-primary-50 text-primary-600 font-medium"
                       : "text-gray-600 hover:bg-gray-100"
-                      >
+                  )}
+                >
                   {item.icon}
                   {isOpen && item.name}
                 </div>
