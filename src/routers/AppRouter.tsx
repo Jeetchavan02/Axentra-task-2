@@ -2,11 +2,9 @@ import NotFound from "@src/pages/NotFound";
 
 import { useLayoutEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Cookies from "js-cookie";
 import MainLayout from "@src/components/layouts/MainLayout";
 import { ToastProvider } from "@src/context/ToastContext";
 
-import { mainDomain } from "@src/auth/jwtService";
 import { UserPermissionProvider } from "@src/context/UserPermissionContext";
 import CheckLogin from "@src/auth/CheckLogin";
 
@@ -21,11 +19,7 @@ import { LeaderboardPage } from "@src/features/leaderboard";
 
 const AppRouter: React.FC = () => {
     useLayoutEffect(() => {
-        const referral_user_token = Cookies.get("referral_user_token");
         sessionStorage.removeItem('isLoad');
-        if (!referral_user_token && window.location.pathname !== '/referral-login') {
-            window.location.replace(`${mainDomain}/merchant/login/`);
-        }
     }, [])
 
     return (<>
