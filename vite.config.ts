@@ -21,17 +21,6 @@ export default defineConfig({
   },
   server: {
     port: 5175,
-    cors: {
-      origin: [
-        'https://example.com',
-        'https://example.com/',
-        'https://example.com',
-        'https://example.com/',
-      ],
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
-    },
-    // allowedHosts: ['localhost']
   },
   resolve: {
     alias: {
