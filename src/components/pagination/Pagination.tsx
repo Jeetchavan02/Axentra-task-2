@@ -36,7 +36,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
                 return (
                     <button
                         key={index}
-                        onClick={() => onPageChange(item)}
+                        onClick={() => onPageChange(Number(item))}
                         className={`px-2 py-[2px] text-sm ${
                             currentPage === item
                                 ? "text-black font-semibold"
