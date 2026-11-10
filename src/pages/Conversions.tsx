@@ -15,7 +15,7 @@ import { Input } from "@src/components/ui/input";
 import { Badge } from "@src/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@src/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@src/components/ui/table";
-import { getReq, baseURL } from "@src/auth/jwtService";
+import { getReq } from "@src/auth/jwtService";
 
 interface ConversionData {
   customer_name: string;
