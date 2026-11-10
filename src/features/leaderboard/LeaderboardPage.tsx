@@ -12,6 +12,7 @@ import LeaderboardSkeleton from "./components/LeaderboardSkeleton";
 import LeaderboardFilters from "./components/LeaderboardFilters";
 import LeaderboardTable from "./components/LeaderboardTable";
 import Podium from "./components/Podium";
+import PointsRulesCard from "./components/PointsRulesCard";
 import RedeemDialog from "./components/RedeemDialog";
 import RedemptionHistory from "./components/RedemptionHistory";
 import RewardsCatalog from "./components/RewardsCatalog";
@@ -118,6 +119,7 @@ export default function LeaderboardPage() {
                 <div className="space-y-6">
                   {standing}
                   <RedemptionHistory redemptions={myRedemptions} onReset={reset} />
+                  <PointsRulesCard />
                 </div>
               </div>
             </TabsContent>
