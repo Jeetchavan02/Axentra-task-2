@@ -8,7 +8,6 @@ import { Progress } from "@src/components/ui/progress";
 
 export default function TotalReferrals() {
   const [timeRange, setTimeRange] = useState("30d");
-  const [channelFilter, setChannelFilter] = useState("all");
 
   const referralStats = [
     { metric: "Total Referrals", value: "3,892", change: "+23.5%", trend: "up" },
