@@ -37,10 +37,10 @@ const AppRouter: React.FC<AppRouterProps> = ({ children }) => {
             <UserPermissionProvider>
                 <Routes>
                     <Route path="/" element={<MainLayout />}>
-                        <Route index element={<AllConversions children={children} />} />
-                        <Route path="/referrals/conversions" element={<ReferralsConversions children={children} />} />
-                        <Route path="/settings" element={<ReferralSettingsPage children={children} />} />
-                        <Route path="/referrals" element={<ReferralsMain children={children} />} />
+                        <Route index element={<AllConversions />} />
+                        <Route path="/referrals/conversions" element={<ReferralsConversions />} />
+                        <Route path="/settings" element={<ReferralSettingsPage />} />
+                        <Route path="/referrals" element={<ReferralsMain />} />
                         <Route path="/leaderboard" element={<LeaderboardPage />} />
                     </Route>
                      
