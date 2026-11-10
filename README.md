@@ -1,87 +1,35 @@
-# React + TypeScript + Vite
+# Axentra Referrals – Leaderboard & Rewards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + TypeScript + Vite + Tailwind frontend for the Axentra referral app.
+This submission keeps the existing referral pages unchanged and adds one new
+page: **Leaderboard & Rewards** at `/leaderboard`.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-## Local development
+## Quick start
 
 ```bash
 npm install
-npm run dev   # http://localhost:5175
+npm run dev
 ```
+
+Open http://localhost:5175/leaderboard. Full steps, checks and troubleshooting
+are in [RUNNING.md](RUNNING.md).
+
+## The new page
+
+- Ranks referrers by points, revenue, referrals or conversion, with period, tier and search filters, a top-3 podium, rank movement and CSV export.
+- Tier progress (Bronze, Silver, Gold, Platinum), a rewards catalog with tier, points and stock rules, and a redemption history.
+- Runs on local mock data; redemptions persist in `localStorage`.
+- Code lives in `src/features/leaderboard/` (see its own README for structure and rules).
+
+## Stack
+
+React 19, TypeScript, Vite 7, Tailwind CSS 3, Radix UI components, lucide-react, react-router-dom 7.
+
+## Local development notes
 
 - `src/auth/*` are local stand-ins (the original auth module was not shipped).
   In dev, `ensureDevSession` seeds a placeholder `referral_user_token` cookie so the
   router does not redirect to the main Axentra domain. This is skipped in
   production builds.
-- Existing pages call a backend that is not bundled here, so they show empty
-  states. The Leaderboard & Rewards page (`/leaderboard`) runs on local mock data.
+- The original pages call a backend that is not bundled here, so they show empty
+  states. The Leaderboard & Rewards page needs no backend.
