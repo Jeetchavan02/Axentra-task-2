@@ -12,13 +12,11 @@ import {
   Filter,
   Download,
   BarChart3,
-  PieChart,
   Activity,
   Globe,
   Smartphone,
   Monitor,
   MapPin,
-  Clock,
   Award,
   Zap
 } from "lucide-react";
@@ -30,7 +28,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@src/components/ui/tab
 
 export default function DetailedAnalytics() {
   const [timeRange, setTimeRange] = useState("30d");
-  const [metricType, setMetricType] = useState("all");
 
   const [comprehensiveMetrics, setComprehensiveMetrics] = useState([
     { title: "Total Referrals", value: "0", change: "+0%", trend: "neutral", icon: Share2 },
