@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@src/components/ui/card";
-import { Badge } from "@src/components/ui/badge";
 import { ArrowUpIcon, ArrowDownIcon } from "lucide-react";
 import { cn } from "@src/lib/utils";
 
@@ -13,7 +12,7 @@ interface DataCardProps {
   badge?: string;
 }
 
-export function DataCard({ title, value, trend, badge }: DataCardProps) {
+export function DataCard({ title, value, trend }: DataCardProps) {
   return (
     <Card>
       <CardContent className="p-6">
