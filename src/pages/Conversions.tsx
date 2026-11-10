@@ -15,7 +15,7 @@ import { Input } from "@src/components/ui/input";
 import { Badge } from "@src/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@src/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@src/components/ui/table";
-import { getReq } from "@src/auth/jwtService";
+import { getReq, baseURL } from "@src/auth/jwtService";
 
 interface ConversionData {
   customer_name: string;
@@ -81,7 +81,7 @@ export default function ReferralsConversions() {
     const params = `?shop=${encodeURIComponent(sessionData.shop)}&range=30d`;
     try {
       // const res = await getReq("all_conversions", params, baseURL);
-      const res = await getReq("all_conversions", params, "http://localhost:8000");
+      const res = await getReq("all_conversions", params, baseURL);
       const data: ApiResponse = res?.data;
       if (data && data.data) {
         setConversions(data.data);
