@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchReferrers } from "../services/leaderboardService";
-import { buildLeaderboard, filterEntries } from "../utils/ranking";
-import type { LeaderboardEntry, Period, RankMetric, Referrer } from "../types";
+import { buildLeaderboard, filterByTier, filterEntries } from "../utils/ranking";
+import type { LeaderboardEntry, Period, RankMetric, Referrer, TierId } from "../types";
 
 export const useLeaderboard = () => {
   const [referrers, setReferrers] = useState<Referrer[]>([]);
@@ -10,6 +10,7 @@ export const useLeaderboard = () => {
   const [period, setPeriod] = useState<Period>("30d");
   const [metric, setMetric] = useState<RankMetric>("points");
   const [query, setQuery] = useState("");
+  const [tierFilter, setTierFilter] = useState<TierId | "all">("all");
 
   const [reloadKey, setReloadKey] = useState(0);
 
@@ -34,7 +35,10 @@ export const useLeaderboard = () => {
     () => buildLeaderboard(referrers, period, metric),
     [referrers, period, metric],
   );
-  const visible = useMemo(() => filterEntries(ranked, query), [ranked, query]);
+  const visible = useMemo(
+    () => filterByTier(filterEntries(ranked, query), tierFilter),
+    [ranked, query, tierFilter],
+  );
 
-  return { referrers, ranked, visible, loading, error, period, setPeriod, metric, setMetric, query, setQuery, reload };
+  return { referrers, ranked, visible, loading, error, period, setPeriod, metric, setMetric, query, setQuery, tierFilter, setTierFilter, reload };
 };
