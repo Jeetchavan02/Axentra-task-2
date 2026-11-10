@@ -8,6 +8,7 @@ import { getAvailablePoints } from "./services/rewardsService";
 import { calculatePoints } from "./utils/points";
 import { getTierForPoints } from "./utils/tiers";
 import { downloadCsv, entriesToCsv } from "./utils/csv";
+import LeaderboardSkeleton from "./components/LeaderboardSkeleton";
 import LeaderboardFilters from "./components/LeaderboardFilters";
 import LeaderboardTable from "./components/LeaderboardTable";
 import Podium from "./components/Podium";
@@ -71,7 +72,7 @@ export default function LeaderboardPage() {
         {board.error ? (
           <p className="py-20 text-center text-red-600">{board.error}</p>
         ) : board.loading ? (
-          <p className="py-20 text-center text-gray-500">Loading leaderboard...</p>
+          <LeaderboardSkeleton />
         ) : (
           <Tabs defaultValue="leaderboard" className="space-y-6">
             <TabsList>
