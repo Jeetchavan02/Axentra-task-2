@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Users, TrendingUp, TrendingDown, Award, Star, Calendar, Filter, Download, Mail, MessageSquare, Target, DollarSign } from "lucide-react";
+import { ArrowLeft, Users, TrendingUp, TrendingDown, Award, Star, Calendar, Filter, Download, Mail, MessageSquare, Target } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@src/components/ui/card";
 import { Button } from "@src/components/ui/button";
 import { Badge } from "@src/components/ui/badge";
 
 export default function ActiveReferrers() {
   const [timeRange, setTimeRange] = useState("30d");
-  const [tierFilter, setTierFilter] = useState("all");
 
   const referrerStats = [
     { metric: "Total Active Referrers", value: "1,247", change: "+15.7%", trend: "up" },
