@@ -1,4 +1,4 @@
-import { Home, LayoutGrid, LayoutTemplate, LogOut, Trophy, Settings, UserCheck, UserCircle, Users, X } from "lucide-react";
+import { Home, LogOut, Trophy, Settings, UserCheck, UserCircle, Users, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@src/lib/utils";
 import { mainDomain } from "@src/auth/jwtService"
