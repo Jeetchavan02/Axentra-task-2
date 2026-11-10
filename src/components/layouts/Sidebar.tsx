@@ -1,4 +1,4 @@
-import { Home, LayoutGrid, LayoutTemplate, LogOut, Settings, UserCheck, UserCircle, Users, X } from "lucide-react";
+import { Home, LayoutGrid, LayoutTemplate, LogOut, Trophy, Settings, UserCheck, UserCircle, Users, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@src/lib/utils";
 import { mainDomain } from "@src/auth/jwtService"
@@ -43,6 +43,7 @@ export default function Sidebar() {
     { name: "Settings -live", path: "/settings", icon: <Users className="mr-3 h-5 w-5" /> },
     { name: "111", path: "/referrals/conversions", icon: <UserCheck className="mr-3 h-5 w-5" /> },
     { name: "Referrals", path: "/referrals", icon: <Home className="mr-3 h-5 w-5" /> },
+    { name: "Leaderboard & Rewards", path: "/leaderboard", icon: <Trophy className="mr-3 h-5 w-5" /> },
     // { name: "Templates", path: "/templates", icon: <LayoutTemplate className="mr-3 h-5 w-5" /> },
     // { name: "Analytics", path: "/analytics", icon: <Megaphone className="mr-3 h-5 w-5" /> },
     // { name: "Billing", path: "/billing", icon: <CreditCard className="mr-3 h-5 w-5" /> },
