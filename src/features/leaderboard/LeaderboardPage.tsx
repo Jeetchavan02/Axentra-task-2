@@ -89,6 +89,8 @@ export default function LeaderboardPage() {
                 onMetricChange={board.setMetric}
                 query={board.query}
                 onQueryChange={board.setQuery}
+                tierFilter={board.tierFilter}
+                onTierFilterChange={board.setTierFilter}
                 onExport={handleExport}
                 onRefresh={board.reload}
               />
