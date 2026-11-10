@@ -6,16 +6,21 @@ interface PodiumProps {
   onSelect?: (entry: LeaderboardEntry) => void;
 }
 
-/** Shows the top three with first place in the centre, like a real podium. */
+/**
+ * Stacks 1st, 2nd, 3rd on mobile; from `md` up, CSS order puts first place
+ * in the centre like a real podium.
+ */
+const MD_ORDER = ["md:order-2", "md:order-1", "md:order-3"];
+
 export default function Podium({ entries, onSelect }: PodiumProps) {
-  const [first, second, third] = entries;
-  if (!first) return null;
-  const ordered = [second, first, third].filter(Boolean) as LeaderboardEntry[];
+  if (entries.length === 0) return null;
 
   return (
     <div className="grid grid-cols-1 items-end gap-4 md:grid-cols-3">
-      {ordered.map((entry) => (
-        <PodiumCard key={entry.referrer.id} entry={entry} onSelect={onSelect} />
+      {entries.slice(0, 3).map((entry, index) => (
+        <div key={entry.referrer.id} className={MD_ORDER[index]}>
+          <PodiumCard entry={entry} onSelect={onSelect} />
+        </div>
       ))}
     </div>
   );
