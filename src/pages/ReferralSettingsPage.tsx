@@ -79,7 +79,8 @@ export default function referralSettingsPage({ children }: referralSettingsProps
         const creationRule = settings?.creation_rule || {};
         const applicationRule = settings?.application_rule || {};
 
-        setFormData({
+        setFormData((prev) => ({
+          ...prev,
           // Referrer
           referrerRewardType: referrer.rewards_type || "percentage",
           referrerRewardValue:
@@ -93,7 +94,7 @@ export default function referralSettingsPage({ children }: referralSettingsProps
           // Rules mapping (UPDATED)
           minCreationOrders: Number(creationRule.min_orders_required) === 1,
           minApplicationOrders: Number(applicationRule.min_orders_required) === 1,
-        });
+        }));
       }
     } catch (error) {
       console.error("Referral settings fetch error:", error);
