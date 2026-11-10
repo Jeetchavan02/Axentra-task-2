@@ -39,7 +39,6 @@ npm run preview                         # serve the production build
 ## Troubleshooting
 
 - **Port 5175 in use:** stop the other process, or run `npx vite --port 5180`.
-- **Redirected to example.com:** you are not on the dev server (production builds do not seed the dev cookie). Use `npm run dev`.
 - **Reset the page's saved data:** in the browser console run
   `localStorage.removeItem("axentra.leaderboard.rewards")` and reload.
 - **Old pages look empty:** expected; they call a backend that is not part of this submission.

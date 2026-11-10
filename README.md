@@ -29,7 +29,7 @@ React 19, TypeScript, Vite 7, Tailwind CSS 3, Radix UI components, lucide-react,
 
 - `src/auth/*` are local stand-ins (the original auth module was not shipped).
   In dev, `ensureDevSession` seeds a placeholder `referral_user_token` cookie so the
-  router does not redirect to the main Axentra domain. This is skipped in
+  router does not redirect away from the dev server. This is skipped in
   production builds.
 - The original pages call a backend that is not bundled here, so they show empty
   states. The Leaderboard & Rewards page needs no backend.
