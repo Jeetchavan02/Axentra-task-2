@@ -19,11 +19,7 @@ import AllConversions from "@src/pages/ReferralsConversions"
 import { LeaderboardPage } from "@src/features/leaderboard";
 
 
-interface AppRouterProps {
-    children?: React.ReactElement | React.ReactElement[]; // typed as element(s)
-}
-
-const AppRouter: React.FC<AppRouterProps> = ({ children }) => {
+const AppRouter: React.FC = () => {
     useLayoutEffect(() => {
         const referral_user_token = Cookies.get("referral_user_token");
         sessionStorage.removeItem('isLoad');
