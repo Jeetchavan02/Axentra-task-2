@@ -32,7 +32,7 @@ export default function ReferralProgram() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingProgram, setEditingProgram] = useState<any>(null);
   const [programs, setPrograms] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     programName: "",
