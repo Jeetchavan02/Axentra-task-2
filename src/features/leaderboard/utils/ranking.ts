@@ -1,6 +1,6 @@
 import { calculateConversionRate, calculatePoints } from "./points";
 import { getTierForPoints } from "./tiers";
-import type { LeaderboardEntry, Period, PeriodStats, RankMetric, Referrer } from "../types";
+import type { LeaderboardEntry, Period, PeriodStats, RankMetric, Referrer, TierId } from "../types";
 
 export const getStatsForPeriod = (referrer: Referrer, period: Period): PeriodStats =>
   period === "all" ? referrer.lifetime : referrer.periods[period];
@@ -67,3 +67,6 @@ export const filterEntries = (entries: LeaderboardEntry[], query: string): Leade
       referrer.name.toLowerCase().includes(needle) || referrer.email.toLowerCase().includes(needle),
   );
 };
+
+export const filterByTier = (entries: LeaderboardEntry[], tier: TierId | "all"): LeaderboardEntry[] =>
+  tier === "all" ? entries : entries.filter((entry) => entry.tier.id === tier);
