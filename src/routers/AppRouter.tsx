@@ -16,6 +16,7 @@ import ReferralSettingsPage from "@src/pages/ReferralSettingsPage";
 import ReferralsConversions from "@src/pages/Conversions";
 import ReferralsMain from "@src/pages/Referrals";
 import AllConversions from "@src/pages/ReferralsConversions"
+import { LeaderboardPage } from "@src/features/leaderboard";
 
 
 interface AppRouterProps {
@@ -40,6 +41,7 @@ const AppRouter: React.FC<AppRouterProps> = ({ children }) => {
                         <Route path="/referrals/conversions" element={<ReferralsConversions children={children} />} />
                         <Route path="/settings" element={<ReferralSettingsPage children={children} />} />
                         <Route path="/referrals" element={<ReferralsMain children={children} />} />
+                        <Route path="/leaderboard" element={<LeaderboardPage />} />
                     </Route>
                      
                     <Route path="/referral-login" element={<LoginPage />} />
