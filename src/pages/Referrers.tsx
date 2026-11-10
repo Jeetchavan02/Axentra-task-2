@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Users,
   Star,
@@ -58,7 +58,7 @@ export default function ReferralsReferrers() {
     alert(`${title}\n${description}`);
   };
 
-  const [, setLocation] = useLocation();
+  const navigate = useNavigate();
 
   const timeframeOptions = [
     { value: "7d", label: "Last 7 Days" },
@@ -254,7 +254,7 @@ export default function ReferralsReferrers() {
   });
 
   const handleViewDetails = (referrer: any) => {
-    setLocation(`/referrals/referrer/${referrer.id}`);
+    navigate(`/referrals/referrer/${referrer.id}`);
   };
 
   const handleContact = (referrer: any) => {
