@@ -76,9 +76,9 @@ export default function LeaderboardPage() {
           <LeaderboardSkeleton />
         ) : (
           <Tabs defaultValue="leaderboard" className="space-y-6">
-            <TabsList>
-              <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
-              <TabsTrigger value="rewards">Rewards</TabsTrigger>
+            <TabsList className="w-full sm:w-auto">
+              <TabsTrigger value="leaderboard" className="flex-1 px-4 sm:px-12">Leaderboard</TabsTrigger>
+              <TabsTrigger value="rewards" className="flex-1 px-4 sm:px-12">Rewards</TabsTrigger>
             </TabsList>
 
             <TabsContent value="leaderboard" className="space-y-6">
