@@ -19,7 +19,7 @@ export default function RedemptionHistory({ redemptions, onReset }: RedemptionHi
         </CardTitle>
         {redemptions.length > 0 && (
           <Button variant="ghost" size="sm" onClick={onReset}>
-            Clear
+            Clear all
           </Button>
         )}
       </CardHeader>
