@@ -24,9 +24,9 @@ export default function LeaderboardFilters(props: LeaderboardFiltersProps) {
   return (
     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
       <Tabs value={props.metric} onValueChange={(value) => props.onMetricChange(value as RankMetric)}>
-        <TabsList>
+        <TabsList className="w-full lg:w-auto">
           {METRIC_OPTIONS.map((option) => (
-            <TabsTrigger key={option.value} value={option.value}>
+            <TabsTrigger key={option.value} value={option.value} className="flex-1 px-2 sm:px-8">
               {option.label}
             </TabsTrigger>
           ))}
