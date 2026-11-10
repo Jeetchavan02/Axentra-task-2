@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@src/components/ui/tabs";
 import HeadingSection from "@src/components/layouts/HeadingSection";
 import { useToast } from "@src/context/ToastContext";
@@ -23,14 +23,11 @@ export default function LeaderboardPage() {
   const { showToast } = useToast();
   const board = useLeaderboard();
   const { rewards, state, redeem, reset } = useRewards();
-  const [selectedId, setSelectedId] = useState("");
+  const [pickedId, setPickedId] = useState("");
   const [pending, setPending] = useState<Reward | null>(null);
 
-  // Default the "viewing as" referrer to the current leader once data arrives.
-  useEffect(() => {
-    if (!selectedId && board.ranked[0]) setSelectedId(board.ranked[0].referrer.id);
-  }, [board.ranked, selectedId]);
-
+  // Default the "viewing as" referrer to the current leader until the user picks one.
+  const selectedId = pickedId || board.ranked[0]?.referrer.id || "";
   const selected = board.referrers.find((r) => r.id === selectedId);
   const lifetimePoints = selected ? calculatePoints(selected.lifetime) : 0;
   const availablePoints = selected ? getAvailablePoints(selected, state) : 0;
@@ -55,7 +52,7 @@ export default function LeaderboardPage() {
     <StandingCard
       referrers={board.referrers}
       selectedId={selectedId}
-      onSelectedChange={setSelectedId}
+      onSelectedChange={setPickedId}
       tier={tier}
       lifetimePoints={lifetimePoints}
       availablePoints={availablePoints}
@@ -94,10 +91,10 @@ export default function LeaderboardPage() {
                 onRefresh={board.reload}
               />
               <SummaryStats entries={board.ranked} />
-              <Podium entries={board.ranked.slice(0, 3)} onSelect={(e) => setSelectedId(e.referrer.id)} />
+              <Podium entries={board.ranked.slice(0, 3)} onSelect={(e) => setPickedId(e.referrer.id)} />
               <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
                 <div className="min-w-0">
-                  <LeaderboardTable entries={board.visible} selectedId={selectedId} onSelect={(e) => setSelectedId(e.referrer.id)} />
+                  <LeaderboardTable entries={board.visible} selectedId={selectedId} onSelect={(e) => setPickedId(e.referrer.id)} />
                 </div>
                 <div className="space-y-6">
                   {standing}
