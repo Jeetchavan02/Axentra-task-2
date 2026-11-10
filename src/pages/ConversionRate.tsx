@@ -8,7 +8,6 @@ import { Progress } from "@src/components/ui/progress";
 
 export default function ConversionRate() {
   const [timeRange, setTimeRange] = useState("30d");
-  const [segmentFilter, setSegmentFilter] = useState("all");
 
   const conversionStats = [
     { metric: "Overall Conversion Rate", value: "18.5%", change: "+5.8%", trend: "up" },
